@@ -4,8 +4,65 @@ const $$ = document.querySelectorAll.bind(document);
 let addBtn = $(".add-btn");
 let closeModalBtn = $(".modal-close");
 let addTaskModal = $(".modal-overlay");
-let inputElement = $(".form-input");
 let todoForm = $(".todo-app-form");
+
+let inputElement = $("#taskTitle.form-input");
+let textAreaElement = $(".form-textarea");
+let categoryElement = $("#taskCategory.form-select");
+let priorityElement = $("#taskPriority.form-select");
+let startTimeElement = $("#startTime.form-input");
+let endTimeElement = $("#endTime.form-input");
+let taskDateElement = $("#taskDate.form-input");
+let taskColorElement = $("#taskColor.form-select");
+
+let newTask = {
+  title: "Học lập trình tại F8",
+  description: "Học lập trình là không ngừng bỏ cuộc",
+  category: "",
+  priority: "",
+  startTime: "20:00",
+  endTime: "00:00",
+  DueDate: "",
+  cardColor: "",
+  isCompleted: false,
+};
+
+let todoTasks = [];
+todoTasks.unshift(newTask);
+let taskList = $(".task-grid");
+let html = todoTasks
+  .map(
+    (task) =>
+      `
+  <div class="task-card green">
+  <div class="task-header">
+    <h3 class="task-title">${task.title}</h3>
+    <button class="task-menu">
+      <i class="fa-solid fa-ellipsis fa-icon"></i>
+      <div class="dropdown-menu">
+        <div class="dropdown-item">
+          <i class="fa-solid fa-pen-to-square fa-icon"></i>
+          Edit
+        </div>
+        <div class="dropdown-item complete">
+          <i class="fa-solid fa-check fa-icon"></i>
+          Mark as Active
+        </div>
+        <div class="dropdown-item delete">
+          <i class="fa-solid fa-trash fa-icon"></i>
+          Delete
+        </div>
+      </div>
+    </button>
+  </div>
+  <p class="task-description">
+    ${task.description}
+  </p>
+  <div class="task-time">${task.startTime} - ${task.endTime}</div>
+</div>
+    `
+  )
+  .join("");
 
 addBtn.onclick = function () {
   addTaskModal.className = "modal-overlay show";
@@ -20,4 +77,18 @@ closeModalBtn.onclick = function () {
 
 todoForm.onsubmit = function (event) {
   event.preventDefault();
+  let taskTitle = inputElement.value;
+  let taskDescription = textAreaElement.value;
+  let taskCategory = categoryElement.value;
+  let taskPriority = priorityElement.value;
+  let startTime = startTimeElement.value;
+  let endTime = endTimeElement.value;
+  let taskDate = taskDateElement.value;
+  let taskColor = taskColorElement.value;
 };
+
+function renderTasks() {
+  taskList.innerHTML = html;
+}
+
+renderTasks();
