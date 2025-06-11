@@ -5,6 +5,7 @@ let addBtn = $(".add-btn");
 let closeModalBtn = $(".modal-close");
 let addTaskModal = $(".modal-overlay");
 let inputElement = $(".form-input");
+let todoForm = $(".todo-app-form");
 
 addBtn.onclick = function () {
   addTaskModal.className = "modal-overlay show";
@@ -15,4 +16,8 @@ addBtn.onclick = function () {
 
 closeModalBtn.onclick = function () {
   addTaskModal.className = "modal-overlay";
+};
+
+todoForm.onsubmit = function (event) {
+  event.preventDefault();
 };
