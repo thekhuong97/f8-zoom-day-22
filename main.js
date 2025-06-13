@@ -65,19 +65,25 @@ let html = todoTasks
   )
   .join("");
 
-// Close Modal Function
+// Open Form + Focus Function
+function openForm() {
+  addTaskModal.className = "modal-overlay show";
+  setTimeout(() => {
+    inputElement.focus();
+  }, 100);
+}
+
+// Close Form Function
 function closeForm() {
   addTaskModal.className = "modal-overlay";
 }
 
 // Hiển thị Modal thêm mới + Focus input
-addBtn.onclick = function () {
-  addTaskModal.className = "modal-overlay show";
-  setTimeout(() => {
-    inputElement.focus();
-  }, 100);
-};
+addBtn.onclick = openForm;
 
+openForm(); //Mở sẵn form khi vào trang web
+
+// Đóng Modal thêm mới
 closeModalBtn.onclick = closeForm;
 cancelModalBtn.onclick = closeForm;
 
