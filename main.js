@@ -3,6 +3,7 @@ const $$ = document.querySelectorAll.bind(document);
 
 let addBtn = $(".add-btn");
 let closeModalBtn = $(".modal-close");
+let cancelModalBtn = $(".btn-cancel");
 let addTaskModal = $(".modal-overlay");
 let todoForm = $(".todo-app-form");
 
@@ -64,6 +65,12 @@ let html = todoTasks
   )
   .join("");
 
+// Close Modal Function
+function closeForm() {
+  addTaskModal.className = "modal-overlay";
+}
+
+// Hiển thị Modal thêm mới + Focus input
 addBtn.onclick = function () {
   addTaskModal.className = "modal-overlay show";
   setTimeout(() => {
@@ -71,9 +78,8 @@ addBtn.onclick = function () {
   }, 100);
 };
 
-function closeForm() {
-  addTaskModal.className = "modal-overlay";
-}
+closeModalBtn.onclick = closeForm;
+cancelModalBtn.onclick = closeForm;
 
 todoForm.onsubmit = function (event) {
   event.preventDefault();
