@@ -71,9 +71,9 @@ addBtn.onclick = function () {
   }, 100);
 };
 
-closeModalBtn.onclick = function () {
+function closeForm() {
   addTaskModal.className = "modal-overlay";
-};
+}
 
 todoForm.onsubmit = function (event) {
   event.preventDefault();
