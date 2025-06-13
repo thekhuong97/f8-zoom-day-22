@@ -23,7 +23,7 @@ let newTask = {
   priority: "",
   startTime: "20:00",
   endTime: "00:00",
-  DueDate: "",
+  dueDate: "",
   cardColor: "",
   isCompleted: false,
 };
@@ -87,16 +87,11 @@ openForm(); //Mở sẵn form khi vào trang web
 closeModalBtn.onclick = closeForm;
 cancelModalBtn.onclick = closeForm;
 
+// Xử Lý Khi Form Submit
 todoForm.onsubmit = function (event) {
   event.preventDefault();
-  let taskTitle = inputElement.value;
-  let taskDescription = textAreaElement.value;
-  let taskCategory = categoryElement.value;
-  let taskPriority = priorityElement.value;
-  let startTime = startTimeElement.value;
-  let endTime = endTimeElement.value;
-  let taskDate = taskDateElement.value;
-  let taskColor = taskColorElement.value;
+  const formValues = Object.fromEntries(new FormData(todoForm));
+  console.log(formValues);
 };
 
 function renderTasks() {
